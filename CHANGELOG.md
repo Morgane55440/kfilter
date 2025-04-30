@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.4.0](https://github.com/dw-labs-org/kfilter/compare/v0.3.1...v0.4.0) (2025-04-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* Normalise the covariance on update instead of unwrapping
+
+### Features
+
+* add simple defmt support to types ([21ce8f6](https://github.com/dw-labs-org/kfilter/commit/21ce8f692e84f14b91726fc2c2529266a58bcac7))
+* add simple defmt support to types ([c1fd92c](https://github.com/dw-labs-org/kfilter/commit/c1fd92c54546fba95b0d4f7e265a2874f3042035))
+* Normalise the covariance on update instead of unwrapping ([92c32dd](https://github.com/dw-labs-org/kfilter/commit/92c32dda68b1abbd28c633a4d84b9d38220f7887)), closes [#45](https://github.com/dw-labs-org/kfilter/issues/45)
+
+
+### Bug Fixes
+
+* no-std support with nalgebra + ci ([9170d1a](https://github.com/dw-labs-org/kfilter/commit/9170d1aa5b81c239c73a8524a33613d287a00e65)), closes [#43](https://github.com/dw-labs-org/kfilter/issues/43)
+* remove serde support from types with functions. Add check script ([f48dd38](https://github.com/dw-labs-org/kfilter/commit/f48dd388a64b0099491c67132d8a9d9f363b1768))
+
+
+### Miscellaneous Chores
+
+* release 0.4.0 ([50e7bb4](https://github.com/dw-labs-org/kfilter/commit/50e7bb47bb017f0fcb78217c2024ca5cf9dcdf50))
+
 ## [0.3.1](https://github.com/dw-labs-org/kfilter/compare/v0.3.0...v0.3.1) (2024-08-19)
 
 
