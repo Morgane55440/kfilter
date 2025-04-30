@@ -111,8 +111,10 @@ pub trait KalmanUpdate<T, const N: usize, const M: usize, ME: Measurement<T, N, 
 #[allow(non_snake_case)]
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct Kalman<T: RealField, const N: usize, const U: usize, S> {
     /// Covariance
+    #[cfg_attr(feature = "defmt", defmt(Debug2Format))]
     P: SMatrix<T, N, N>,
     /// The associated [System] containing the state vector x.
     /// This is public so changes can be made on the fly, which may be useful
@@ -231,10 +233,13 @@ where
         x_initial: SVector<T, N>,
         P_initial: SMatrix<T, N, N>,
     ) -> Self {
-        Self {
+        let s = Self {
             P: P_initial,
             system: LinearSystem::new(F, Q, B, x_initial),
-        }
+        };
+        #[cfg(feature = "defmt")]
+        defmt::debug!("Kalman::new_with_input: {}", s);
+        s
     }
 }
 
@@ -313,6 +318,7 @@ where
 /// ```
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct Kalman1M<T: RealField, const N: usize, const U: usize, const M: usize, S, ME> {
     kalman: Kalman<T, N, U, S>,
     measurement: ME,
