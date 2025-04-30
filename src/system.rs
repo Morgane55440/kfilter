@@ -216,7 +216,7 @@ pub type StepFunction<T, const N: usize, const U: usize> =
 /// Defined by a [StepFunction] that performs state transition and jacobian and covariance calculation.
 #[allow(non_snake_case)]
 #[derive(Debug, Clone)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+// #[cfg_attr(feature = "serde", derive(serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct NonLinearSystem<T: RealField, const N: usize, const U: usize> {
     /// System state
@@ -233,6 +233,7 @@ pub struct NonLinearSystem<T: RealField, const N: usize, const U: usize> {
     F_t: SMatrix<T, N, N>,
     /// Function that steps from current state to next with an input   
     /// Returns the new state, the jacobian and the process covariance
+    // #[cfg_attr(feature = "serde", serde(skip))]
     step_fn: StepFunction<T, N, U>,
 }
 

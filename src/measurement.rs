@@ -94,7 +94,7 @@ pub type Prediction<T, const N: usize, const M: usize> = fn(&SVector<T, N>) -> S
 /// H and R must be updated before being passed to [Kalman](crate::kalman::Kalman) filter
 #[allow(non_snake_case)]
 #[derive(Debug, Clone)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+// #[cfg_attr(feature = "serde", derive(serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct NonLinearMeasurement<T, const N: usize, const M: usize> {
     /// Observation / measurement. Can be modifed directly to set new value.
@@ -108,6 +108,7 @@ pub struct NonLinearMeasurement<T, const N: usize, const M: usize> {
     #[cfg_attr(feature = "defmt", defmt(Debug2Format))]
     pub R: SMatrix<T, M, M>,
     /// Calculates the predicted value of z. i.e h(x)
+    // #[cfg_attr(feature = "serde", serde(skip))]
     prediction_fn: Prediction<T, N, M>,
 }
 
