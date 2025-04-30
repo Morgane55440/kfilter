@@ -9,6 +9,7 @@ jobs:
       - run: cargo clippy -- -D warnings
       - run: cargo build --features std
       - run: cargo build --features serde
+      - run: cargo build --features defmt
       - run: cargo test
       - run: cargo doc --no-deps
         env:
