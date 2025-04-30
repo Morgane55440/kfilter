@@ -213,6 +213,8 @@ impl<
         *self.system.state_mut() += K * y;
         // covariance update
         self.P = (SMatrix::identity() - K * measurement.observation()) * self.P;
+        // Ensure covariance is symmetric (deals with numerical errors)
+        self.P = self.P.symmetric_part();
         self.state()
     }
 }
